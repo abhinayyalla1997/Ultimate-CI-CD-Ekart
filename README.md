@@ -1,124 +1,94 @@
-🛒 Shopping eKart CI/CD Deployment
+🚀 Shopping eKart Website Deployment with CI/CD
 
-🚀 Successfully deployed a Shopping eKart Website using a complete CI/CD pipeline with Jenkins, ensuring security, quality, and seamless delivery.
+Overview
 
-🔧 Tools & Technologies Used
+Successfully deployed a Shopping eKart website using a fully automated CI/CD pipeline with Jenkins. This project integrates various DevOps tools to ensure secure, high-quality, and seamless delivery.
 
-✅ Version Control: GitHub
+🔧 Tools Used
 
-✅ CI/CD Tool: Jenkins
+✅ GitHub
 
-✅ Build Tool: Maven
+✅ Jenkins
 
-✅ Code Quality Analysis: SonarQube
+✅ Maven
 
-✅ Security Scanning: OWASP Dependency Check
+✅ SonarQube
 
-✅ Artifact Repository: Nexus
+✅ OWASP Dependency Check
 
-✅ Containerization: Docker
+✅ Docker
 
-✅ Image Scanning: Trivy
+✅ Amazon EKS
 
-✅ Orchestration: Amazon EKS (Kubernetes)
+✅ Nexus
 
-✅ Domain Management: Namecheap
+✅ Trivy
 
-✅ SSL/TLS: Certbot (Optional)
+📌 Pipeline Steps
 
-📌 CI/CD Pipeline Steps
+Clone the Code - Jenkins fetches the latest code from GitHub.
 
-Clone the Code: Jenkins pulls the source code from GitHub.
+Build the Project - Maven compiles the source code.
 
-Compile the Code: Maven is used to compile and package the application.
+Static Code Analysis - SonarQube performs quality checks.
 
-Static Code Analysis: SonarQube scans the code for bugs, vulnerabilities, and code smells.
+Security Scanning - OWASP Dependency Check scans for vulnerabilities.
 
-Security Scanning: OWASP Dependency Check scans for vulnerable dependencies.
+Artifact Storage - Build artifacts are stored in Nexus.
 
-Build and Store Artifacts: The compiled application is stored in Nexus.
+Docker Image Creation - A Docker image is built from the Dockerfile.
 
-Create a Docker Image: The application is containerized using a Dockerfile.
+Image Scanning - Trivy scans the image for vulnerabilities.
 
-Image Scanning: Trivy scans the Docker image for vulnerabilities.
+Push Image to DockerHub - The built image is pushed to DockerHub.
 
-Push Image to DockerHub: The built image is pushed to a container registry.
+Deploy to Kubernetes - The image is deployed to Amazon EKS using deployment and service YAML files.
 
-Deploy on Kubernetes (EKS): The application is deployed using Kubernetes deployment and service YAML files (NodePort).
+Configure Domain - Namecheap is used to configure a custom domain.
 
-Configure Custom Domain: A domain is configured via Namecheap.
+(Optional) Secure with SSL - Certbot is used to secure the website with a free TLS/SSL certificate.
 
-(Optional) Secure the Website: Certbot is used for free TLS/SSL certificates.
+🚀 Getting Started
 
-🚀 Deployment Architecture
+Clone the Repository
 
-(Replace the above link with your actual architecture diagram)
+git clone https://github.com/yourusername/shopping-ekart.git
 
-📂 Project Structure
+Modify Configuration Files
 
-├── src/               # Application source code
-├── Dockerfile         # Docker image instructions
-├── Jenkinsfile        # CI/CD pipeline script
-├── deployment.yaml    # Kubernetes deployment configuration
-├── service.yaml       # Kubernetes service configuration
-├── README.me          # Project documentation
+Ensure you update the Jenkins pipeline configuration and Kubernetes deployment YAML files as per your setup.
 
-📜 Prerequisites
+Running the CI/CD Pipeline
 
-Install Jenkins with required plugins (Pipeline, Docker, SonarQube, etc.)
+Trigger the Jenkins pipeline to start the automated deployment:
 
-Install Maven for build automation
+./jenkins-pipeline.sh
 
-Set up SonarQube for static code analysis
+🛠 Prerequisites
 
-Deploy Nexus as an artifact repository
+Jenkins installed and configured.
 
-Set up an Amazon EKS cluster
+AWS account with EKS set up.
 
-Install Trivy for container security scanning
+Docker and Kubernetes installed locally.
 
-Configure a domain in Namecheap (Optional)
-
-🛠️ Setup & Usage
-
-1️⃣ Clone the Repository
-
-git clone https://github.com/your-username/shopping-ekart-ci-cd.git
-cd shopping-ekart-ci-cd
-
-2️⃣ Run Jenkins Pipeline
-
-Create a Jenkins Pipeline and link it to your GitHub repository.
-
-Use the Jenkinsfile in this repository to define the pipeline steps.
-
-3️⃣ Deploy on Kubernetes (EKS)
-
-kubectl apply -f deployment.yaml
-kubectl apply -f service.yaml
-
-4️⃣ Verify Deployment
-
-kubectl get pods
-kubectl get services
-
-📌 Future Enhancements
-
-Implement GitHub Actions for an alternative CI/CD pipeline.
-
-Add Terraform for infrastructure automation.
-
-Improve security with RBAC policies in Kubernetes.
-
-📜 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+SonarQube and Nexus configured.
 
 🤝 Contributing
 
-Contributions are welcome! Feel free to fork this repo and submit a pull request.
+Contributions are welcome! Follow these steps:
 
-📞 Contact
+Fork the repository.
 
-👤 Your Name📧 Email: your.email@example.com🔗 LinkedIn: your-linkedin
+Create a new branch (git checkout -b feature/new-feature).
+
+Commit changes (git commit -m 'Add new feature').
+
+Push to branch (git push origin feature/new-feature).
+
+Create a pull request.
+
+📜 License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
 
