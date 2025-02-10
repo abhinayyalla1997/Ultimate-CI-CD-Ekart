@@ -1,167 +1,124 @@
-# Spring Boot Shopping Cart Web App
+🛒 Shopping eKart CI/CD Deployment
 
-## About
+🚀 Successfully deployed a Shopping eKart Website using a complete CI/CD pipeline with Jenkins, ensuring security, quality, and seamless delivery.
 
-This is a demo project for practicing Spring + Thymeleaf. The idea was to build some basic shopping cart web app.
+🔧 Tools & Technologies Used
 
-It was made using **Spring Boot**, **Spring Security**, **Thymeleaf**, **Spring Data JPA**, **Spring Data REST and Docker**. 
-Database is in memory **H2**.
+✅ Version Control: GitHub
 
-There is a login and registration functionality included.
+✅ CI/CD Tool: Jenkins
 
-Users can shop for products. Each user has his own shopping cart (session functionality).
-Checkout is transactional.
+✅ Build Tool: Maven
 
-## Configuration
+✅ Code Quality Analysis: SonarQube
 
-### Configuration Files
+✅ Security Scanning: OWASP Dependency Check
 
-Folder **src/resources/** contains config files for **shopping-cart** Spring Boot application.
+✅ Artifact Repository: Nexus
 
-* **src/resources/application.properties** - main configuration file. Here it is possible to change admin username/password,
-as well as change the port number.
+✅ Containerization: Docker
 
-## How to run
+✅ Image Scanning: Trivy
 
-There are several ways to run the application. You can run it from the command line with included Maven Wrapper, Maven or Docker. 
+✅ Orchestration: Amazon EKS (Kubernetes)
 
-Once the app starts, go to the web browser and visit `http://localhost:8070/home`
+✅ Domain Management: Namecheap
 
-Admin username: **admin**
+✅ SSL/TLS: Certbot (Optional)
 
-Admin password: **admin**
+📌 CI/CD Pipeline Steps
 
-User username: **user**
+Clone the Code: Jenkins pulls the source code from GitHub.
 
-User password: **password**
+Compile the Code: Maven is used to compile and package the application.
 
-### Maven Wrapper
+Static Code Analysis: SonarQube scans the code for bugs, vulnerabilities, and code smells.
 
-#### Using the Maven Plugin
+Security Scanning: OWASP Dependency Check scans for vulnerable dependencies.
 
-Go to the root folder of the application and type:
-```bash
-$ chmod +x scripts/mvnw
-$ scripts/mvnw spring-boot:run
-```
+Build and Store Artifacts: The compiled application is stored in Nexus.
 
-#### Using Executable Jar
+Create a Docker Image: The application is containerized using a Dockerfile.
 
-Or you can build the JAR file with 
-```bash
-$ scripts/mvnw clean package
-``` 
+Image Scanning: Trivy scans the Docker image for vulnerabilities.
 
-Then you can run the JAR file:
-```bash
-$ java -jar target/shopping-cart-0.0.1-SNAPSHOT.jar
-```
+Push Image to DockerHub: The built image is pushed to a container registry.
 
-### Maven
+Deploy on Kubernetes (EKS): The application is deployed using Kubernetes deployment and service YAML files (NodePort).
 
-Open a terminal and run the following commands to ensure that you have valid versions of Java and Maven installed:
+Configure Custom Domain: A domain is configured via Namecheap.
 
-```bash
-$ java -version
-java version "1.8.0_102"
-Java(TM) SE Runtime Environment (build 1.8.0_102-b14)
-Java HotSpot(TM) 64-Bit Server VM (build 25.102-b14, mixed mode)
-```
+(Optional) Secure the Website: Certbot is used for free TLS/SSL certificates.
 
-```bash
-$ mvn -v
-Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T16:41:47+00:00)
-Maven home: /usr/local/Cellar/maven/3.3.9/libexec
-Java version: 1.8.0_102, vendor: Oracle Corporation
-```
+🚀 Deployment Architecture
 
-#### Using the Maven Plugin
+(Replace the above link with your actual architecture diagram)
 
-The Spring Boot Maven plugin includes a run goal that can be used to quickly compile and run your application. 
-Applications run in an exploded form, as they do in your IDE. 
-The following example shows a typical Maven command to run a Spring Boot application:
- 
-```bash
-$ mvn spring-boot:run
-``` 
+📂 Project Structure
 
-#### Using Executable Jar
+├── src/               # Application source code
+├── Dockerfile         # Docker image instructions
+├── Jenkinsfile        # CI/CD pipeline script
+├── deployment.yaml    # Kubernetes deployment configuration
+├── service.yaml       # Kubernetes service configuration
+├── README.me          # Project documentation
 
-To create an executable jar run:
+📜 Prerequisites
 
-```bash
-$ mvn clean package
-``` 
+Install Jenkins with required plugins (Pipeline, Docker, SonarQube, etc.)
 
-To run that application, use the java -jar command, as follows:
+Install Maven for build automation
 
-```bash
-$ java -jar target/shopping-cart-0.0.1-SNAPSHOT.jar
-```
+Set up SonarQube for static code analysis
 
-To exit the application, press **ctrl-c**.
+Deploy Nexus as an artifact repository
 
-### Docker
+Set up an Amazon EKS cluster
 
-It is possible to run **shopping-cart** using Docker:
+Install Trivy for container security scanning
 
-Build Docker image:
-```bash
-$ mvn clean package
-$ docker build -t shopping-cart:dev -f docker/Dockerfile .
-```
+Configure a domain in Namecheap (Optional)
 
-Run Docker container:
-```bash
-$ docker run --rm -i -p 8070:8070 \
-      --name shopping-cart \
-      shopping-cart:dev
-```
+🛠️ Setup & Usage
 
-##### Helper script
+1️⃣ Clone the Repository
 
-It is possible to run all of the above with helper script:
+git clone https://github.com/your-username/shopping-ekart-ci-cd.git
+cd shopping-ekart-ci-cd
 
-```bash
-$ chmod +x scripts/run_docker.sh
-$ scripts/run_docker.sh
-```
+2️⃣ Run Jenkins Pipeline
 
-## Docker 
+Create a Jenkins Pipeline and link it to your GitHub repository.
 
-Folder **docker** contains:
+Use the Jenkinsfile in this repository to define the pipeline steps.
 
-* **docker/shopping-cart/Dockerfile** - Docker build file for executing shopping-cart Docker image. 
-Instructions to build artifacts, copy build artifacts to docker image and then run app on proper port with proper configuration file.
+3️⃣ Deploy on Kubernetes (EKS)
 
-## Util Scripts
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
 
-* **scripts/run_docker.sh.sh** - util script for running shopping-cart Docker container using **docker/Dockerfile**
+4️⃣ Verify Deployment
 
-## Tests
+kubectl get pods
+kubectl get services
 
-Tests can be run by executing following command from the root of the project:
+📌 Future Enhancements
 
-```bash
-$ mvn test
-```
+Implement GitHub Actions for an alternative CI/CD pipeline.
 
-## Helper Tools
+Add Terraform for infrastructure automation.
 
-### HAL REST Browser
+Improve security with RBAC policies in Kubernetes.
 
-Go to the web browser and visit `http://localhost:8070/`
+📜 License
 
-You will need to be authenticated to be able to see this page.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-### H2 Database web interface
+🤝 Contributing
 
-Go to the web browser and visit `http://localhost:8070/h2-console`
+Contributions are welcome! Feel free to fork this repo and submit a pull request.
 
-In field **JDBC URL** put 
-```
-jdbc:h2:mem:shopping_cart_db
-```
+📞 Contact
 
-In `/src/main/resources/application.properties` file it is possible to change both
-web interface url path, as well as the datasource url.
+👤 Your Name📧 Email: your.email@example.com🔗 LinkedIn: your-linkedin
+
